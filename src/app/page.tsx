@@ -1,6 +1,5 @@
 "use client";
 
-import { VideoText } from "@/components/ui/video-text";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
@@ -61,22 +60,37 @@ export default function Home() {
 	];
 
 	return (
-		<div className="h-screen w-screen py-16 snap-y snap-mandatory scroll-smooth delay-200">
+		<div className="min-h-screen snap-y snap-mandatory">
 			<ScrollProgress className="top-[65px]" />
 			<Header />
 
-			{/* <div className="py-16 snap-y snap-mandatory scroll-smooth delay-200"> */}
-				{/* Introduction */}
-				<section className="w-full h-[calc(100dvh-64px)] relative flex flex-col items-center justify-center bg-black snap-start">
-					<div className="relative h-52 w-full overflow-hidden">
-						<VideoText
-							src="https://res.cloudinary.com/dofnn7sbx/video/upload/v1760579013/132235-752803332_small_rljhch.mp4"
-							fontSize={"160"}
-						>
-							KHÍ THẾ MÙA THU
-						</VideoText>
+			{/* Introduction section */}
+			<div className="py-16">
+				<section className="w-full h-[calc(100dvh-64px)] relative flex flex-col items-center justify-center overflow-hidden">
+					{/* Background Video */}
+					<video
+						className="absolute inset-0 w-full h-full object-cover z-0"
+						src="https://res.cloudinary.com/dofnn7sbx/video/upload/v1760579013/132235-752803332_small_rljhch.mp4"
+						autoPlay
+						loop
+						muted
+						playsInline
+					/>
+
+					{/* Dark overlay for better text readability */}
+					<div className="absolute inset-0 bg-black/50 z-10"></div>
+
+					{/* Text content */}
+					<div className="relative z-20 text-center">
+						<h1 className="text-white text-9xl font-laco mb-8">
+							<span className="text-yellow-500">KHÍ T</span>
+							<span className="text-red-500">HẾ MÙ</span>
+							<span className="text-yellow-500">A THU</span>
+						</h1>
+						<p className="text-white text-5xl font-laco">
+							Phong trào giải phóng dân tộc 1939 - 1945
+						</p>
 					</div>
-					<p className="text-white text-5xl font-laco">Phong trào giải phóng dân tộc 1939 - 1945</p>
 				</section>
 
 				{/* Navigation Carousel */}
