@@ -182,6 +182,7 @@ export default function MarkmapHooks() {
 	const router = useRouter();
 	const [value, setValue] = useState(initValue);
 	const [showEditor, setShowEditor] = useState(false);
+	const [isMounted, setIsMounted] = useState(false);
 	// Ref for SVG element
 	const refSvg = useRef<SVGSVGElement>(null);
 	// Ref for markmap object
@@ -190,8 +191,12 @@ export default function MarkmapHooks() {
 	const refToolbar = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		// Create markmap and save to refMm
-		if (refMm.current) return;
+		setIsMounted(true);
+	}, []);
+
+	useEffect(() => {
+		// Create markmap and save to refMm only on client side
+		if (!isMounted || refMm.current) return;
 		const mm = Markmap.create(refSvg.current, {
 			initialExpandLevel: 2,
 			maxWidth: 300,
@@ -199,17 +204,18 @@ export default function MarkmapHooks() {
 		console.log("create", refSvg.current);
 		refMm.current = mm;
 		renderToolbar(refMm.current, refToolbar.current, router);
-	}, [router]);
+	}, [router, isMounted]);
 
 	useEffect(() => {
 		// Update data for markmap once value is changed
+		if (!isMounted) return;
 		const mm = refMm.current;
 		if (!mm) return;
 		const { root } = transformer.transform(value);
 		mm.setData(root).then(() => {
 			mm.fit();
 		});
-	}, [value]);
+	}, [value, isMounted]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setValue(e.target.value);
@@ -341,18 +347,29 @@ export default function MarkmapHooks() {
 							</CardHeader>
 							<CardContent className="p-0">
 								<div className="relative h-[80vh] bg-gradient-to-br from-slate-50 to-red-50 rounded-lg overflow-hidden">
-									<svg
-										className="w-full h-full"
-										ref={refSvg}
-										style={{
-											background:
-												"radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)",
-										}}
-									/>
-									<div
-										className="absolute bottom-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg p-2"
-										ref={refToolbar}
-									></div>
+									{!isMounted ? (
+										<div className="flex items-center justify-center h-full">
+											<div className="text-center">
+												<div className="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"></div>
+												<p className="text-gray-600">Đang tải sơ đồ tư duy...</p>
+											</div>
+										</div>
+									) : (
+										<>
+											<svg
+												className="w-full h-full"
+												ref={refSvg}
+												style={{
+													background:
+														"radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)",
+												}}
+											/>
+											<div
+												className="absolute bottom-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg p-2"
+												ref={refToolbar}
+											></div>
+										</>
+									)}
 								</div>
 							</CardContent>
 						</Card>

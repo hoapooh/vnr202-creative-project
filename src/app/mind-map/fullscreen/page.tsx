@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Markmap } from "markmap-view";
 import { transformer } from "../markmap";
 import { Toolbar } from "markmap-toolbar";
@@ -159,6 +159,7 @@ function renderToolbar(mm: Markmap, wrapper: HTMLElement | null) {
 
 export default function FullscreenMindMap() {
 	const router = useRouter();
+	const [isMounted, setIsMounted] = useState(false);
 	// Ref for SVG element
 	const refSvg = useRef<SVGSVGElement>(null);
 	// Ref for markmap object
@@ -167,25 +168,30 @@ export default function FullscreenMindMap() {
 	const refToolbar = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		// Create markmap and save to refMm
-		if (refMm.current) return;
+		setIsMounted(true);
+	}, []);
+
+	useEffect(() => {
+		// Only create markmap on client side
+		if (!isMounted || refMm.current) return;
 		const mm = Markmap.create(refSvg.current, {
 			initialExpandLevel: 2,
 			maxWidth: 300,
 		});
 		refMm.current = mm;
 		renderToolbar(refMm.current, refToolbar.current);
-	}, []);
+	}, [isMounted]);
 
 	useEffect(() => {
 		// Update data for markmap once value is changed
+		if (!isMounted) return;
 		const mm = refMm.current;
 		if (!mm) return;
 		const { root } = transformer.transform(initValue);
 		mm.setData(root).then(() => {
 			mm.fit();
 		});
-	}, []);
+	}, [isMounted]);
 
 	const goBack = () => {
 		router.back();
@@ -194,6 +200,45 @@ export default function FullscreenMindMap() {
 	const goHome = () => {
 		router.push("/");
 	};
+
+	if (!isMounted) {
+		return (
+			<main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 relative">
+				<div className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+					<div className="flex items-center justify-between px-6 py-3 h-16">
+						<div className="flex items-center gap-4">
+							<Button
+								onClick={goBack}
+								variant="outline"
+								size="sm"
+								className="flex items-center gap-2"
+							>
+								<ArrowLeft className="w-4 h-4" />
+								Quay lại
+							</Button>
+							<Button
+								onClick={goHome}
+								variant="outline"
+								size="sm"
+								className="flex items-center gap-2"
+							>
+								<Home className="w-4 h-4" />
+								Trang chủ
+							</Button>
+						</div>
+						<h1 className="text-lg font-semibold text-gray-800">Sơ đồ Tư duy - Toàn màn hình</h1>
+						<div className="w-32"></div>
+					</div>
+				</div>
+				<div className="pt-16 h-screen flex items-center justify-center">
+					<div className="text-center">
+						<div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600 mx-auto mb-4"></div>
+						<p className="text-gray-600">Đang tải sơ đồ tư duy...</p>
+					</div>
+				</div>
+			</main>
+		);
+	}
 
 	return (
 		<main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 relative">
