@@ -364,7 +364,7 @@ export default function MarkmapHooks() {
 												}}
 											/>
 											<div
-												className="absolute bottom-4 right-4 bg-white/90 backdrop-blur rounded-lg shadow-lg p-2"
+												className="absolute bottom-4 left-4 bg-white/90 backdrop-blur rounded-lg shadow-lg p-2"
 												ref={refToolbar}
 											></div>
 										</>
