@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import Image from "next/image";
+import { Star, Crown, Sword, Trophy } from "lucide-react";
+import VN from "country-flag-icons/react/3x2/VN";
 
 export default function Home() {
 	const sections = [
@@ -180,40 +182,126 @@ export default function Home() {
 					</Carousel>
 				</section>
 
-				{/* Introduction Text */}
-				<section className="mx-auto px-6 py-16 container">
-					<div className="text-center space-y-6">
-						<h3 className="text-3xl font-bold text-gray-800">Cuộc Cách mạng Tháng Tám 1945</h3>
-						<p className="text-lg text-gray-600 leading-relaxed">
-							Cách mạng Tháng Tám năm 1945 là một trong những sự kiện quan trọng nhất trong lịch sử
-							dân tộc Việt Nam. Đây là cuộc cách mạng giải phóng dân tộc đầu tiên thành công ở một
-							nước thuộc địa, mở ra kỷ nguyên độc lập, tự do cho dân tộc Việt Nam và có tác động sâu
-							sắc đến phong trào giải phóng dân tộc trên thế giới.
-						</p>
-						<div className="grid md:grid-cols-3 gap-8 mt-12">
-							<div className="text-center">
-								<div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-									<span className="text-2xl">🏛️</span>
+				{/* Introduction Text - Modern Design */}
+				<section className="mx-auto px-6 py-20 container">
+					<Card className="overflow-hidden shadow-2xl bg-gradient-to-br from-white to-red-50 border-0 pt-0">
+						<CardHeader className="bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 text-white relative overflow-hidden py-12">
+							<div className="absolute inset-0 bg-gradient-to-r from-red-600/90 via-yellow-500/90 to-red-600/90"></div>
+							<div className="absolute -right-40 -top-40 w-80 h-80 bg-white/10 rounded-full"></div>
+							<div className="absolute -left-20 -bottom-20 w-60 h-60 bg-white/5 rounded-full"></div>
+							<div className="absolute right-20 bottom-10 w-40 h-40 bg-white/5 rounded-full"></div>
+
+							<div className="relative z-10 text-center space-y-6">
+								{/* Header with Vietnam flags */}
+								<div className="flex items-center justify-center gap-6 mb-6">
+									<VN className="w-16 h-12 rounded shadow-2xl animate-pulse" />
+									<div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
+										<Star className="w-10 h-10 text-white" />
+									</div>
+									<VN className="w-16 h-12 rounded shadow-2xl animate-pulse" />
 								</div>
-								<h4 className="font-semibold text-gray-800 mb-2">Thành lập Nhà nước</h4>
-								<p className="text-sm text-gray-600">Nước Việt Nam Dân chủ Cộng hòa ra đời</p>
+
+								<CardTitle className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-yellow-200 bg-clip-text text-transparent">
+									Cách mạng Tháng Tám 1945
+								</CardTitle>
+
+								<p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+									Sự kiện quan trọng nhất trong lịch sử dân tộc Việt Nam
+								</p>
 							</div>
-							<div className="text-center">
-								<div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-									<span className="text-2xl">⚔️</span>
+						</CardHeader>
+
+						<CardContent className="p-8 md:p-12 space-y-12">
+							{/* Main Description */}
+							<div className="text-center space-y-6">
+								<div className="bg-gradient-to-r from-red-50 to-yellow-50 rounded-xl p-8 border-l-4 border-red-400 shadow-lg">
+									<p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+										Cách mạng Tháng Tám năm 1945 là một trong những sự kiện quan trọng nhất trong
+										lịch sử dân tộc Việt Nam. Đây là cuộc cách mạng giải phóng dân tộc đầu tiên
+										thành công ở một nước thuộc địa, mở ra kỷ nguyên độc lập, tự do cho dân tộc Việt
+										Nam và có tác động sâu sắc đến phong trào giải phóng dân tộc trên thế giới.
+									</p>
 								</div>
-								<h4 className="font-semibold text-gray-800 mb-2">Giải phóng Dân tộc</h4>
-								<p className="text-sm text-gray-600">Kết thúc gần 1 thế kỷ đô hộ thực dân</p>
 							</div>
-							<div className="text-center">
-								<div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-									<span className="text-2xl">🌟</span>
+
+							{/* Key Achievements - Modern Cards */}
+							<div className="grid md:grid-cols-3 gap-8">
+								{/* State Formation */}
+								<div className="group bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-8 border border-red-200 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+									<div className="text-center space-y-4">
+										<div className="relative mx-auto mb-6">
+											<div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+												<Crown className="w-10 h-10 text-red-600" />
+											</div>
+											<div className="absolute -top-2 -right-2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+												<span className="text-white text-sm">🏛️</span>
+											</div>
+										</div>
+										<h4 className="text-xl font-bold text-red-800 mb-3">Thành lập Nhà nước</h4>
+										<p className="text-red-700 leading-relaxed">
+											Nước Việt Nam Dân chủ Cộng hòa ra đời, đánh dấu sự ra đời của nhà nước độc lập
+											đầu tiên của dân tộc
+										</p>
+									</div>
 								</div>
-								<h4 className="font-semibold text-gray-800 mb-2">Di sản Lịch sử</h4>
-								<p className="text-sm text-gray-600">Bài học quý báu cho thế hệ mai sau</p>
+
+								{/* National Liberation */}
+								<div className="group bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl p-8 border border-yellow-200 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+									<div className="text-center space-y-4">
+										<div className="relative mx-auto mb-6">
+											<div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+												<Sword className="w-10 h-10 text-yellow-600" />
+											</div>
+											<div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+												<span className="text-white text-sm">⚔️</span>
+											</div>
+										</div>
+										<h4 className="text-xl font-bold text-yellow-800 mb-3">Giải phóng Dân tộc</h4>
+										<p className="text-yellow-700 leading-relaxed">
+											Kết thúc gần 1 thế kỷ đô hộ thực dân, giải phóng dân tộc khỏi ách thống trị
+											của đế quốc
+										</p>
+									</div>
+								</div>
+
+								{/* Historical Legacy */}
+								<div className="group bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-8 border border-green-200 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+									<div className="text-center space-y-4">
+										<div className="relative mx-auto mb-6">
+											<div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+												<Trophy className="w-10 h-10 text-green-600" />
+											</div>
+											<div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+												<span className="text-white text-sm">🌟</span>
+											</div>
+										</div>
+										<h4 className="text-xl font-bold text-green-800 mb-3">Di sản Lịch sử</h4>
+										<p className="text-green-700 leading-relaxed">
+											Để lại bài học quý báu và nguồn cảm hứng cho các thế hệ tương lai và phong
+											trào giải phóng thế giới
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
+
+							{/* Quote Section */}
+							<div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-8 shadow-lg border border-gray-200">
+								<div className="text-center">
+									<blockquote className="text-gray-700 text-lg md:text-xl italic leading-relaxed">
+										<span className="text-red-500 text-3xl font-serif">&ldquo;</span>
+										Cách mạng Tháng Tám 1945 - Ngọn đuốc sáng của dân tộc, mở ra kỷ nguyên độc lập,
+										tự do, hạnh phúc
+										<span className="text-red-500 text-3xl font-serif">&rdquo;</span>
+									</blockquote>
+									<div className="mt-6 flex items-center justify-center gap-4">
+										<VN className="w-8 h-6 rounded shadow" />
+										<span className="text-gray-500 font-medium">Dân tộc Việt Nam</span>
+										<VN className="w-8 h-6 rounded shadow" />
+									</div>
+								</div>
+							</div>
+						</CardContent>
+					</Card>
 				</section>
 			</div>
 
