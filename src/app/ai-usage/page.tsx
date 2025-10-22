@@ -1,4 +1,3 @@
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Footer } from "@/components/footer";
@@ -172,7 +171,6 @@ export default function AIUsagePage() {
 			</section>
 
 			<Footer />
-			<ScrollToTop />
 		</main>
 	);
 }

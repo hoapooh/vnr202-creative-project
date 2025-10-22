@@ -14,6 +14,10 @@ const navigation = [
 		label: "Mind Map",
 	},
 	{
+		href: "/quiz",
+		label: "Q&A - Quiz",
+	},
+	{
 		href: "/ai-usage",
 		label: "AI Usage",
 	},

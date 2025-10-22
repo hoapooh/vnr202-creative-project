@@ -1,7 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import AntiJapaneseMovement from "@/components/section/anti-japanese-movement";
 
 export default function AntiJapaneseMovementPage() {
@@ -11,7 +10,6 @@ export default function AntiJapaneseMovementPage() {
 			<Header />
 			<AntiJapaneseMovement />
 			<Footer />
-			<ScrollToTop />
 		</div>
 	);
 }

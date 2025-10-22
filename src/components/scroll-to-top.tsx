@@ -35,14 +35,13 @@ export function ScrollToTop() {
 	return (
 		<Button
 			onClick={scrollToTop}
-			size="icon"
 			className={cn(
-				"fixed bottom-8 right-8 z-50 rounded-full shadow-lg transition-all duration-300",
+				"fixed bottom-6 right-24 z-50 rounded-full size-16 shadow-lg transition-all duration-300",
 				isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
 			)}
 			aria-label="Scroll to top"
 		>
-			<ArrowUp className="h-5 w-5" />
+			<ArrowUp className="size-8" />
 		</Button>
 	);
 }

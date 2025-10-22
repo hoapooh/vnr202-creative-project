@@ -7,7 +7,6 @@ import { Toolbar } from "markmap-toolbar";
 import "markmap-toolbar/dist/style.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -232,7 +231,7 @@ export default function MarkmapHooks() {
 
 			{/* Hero Section */}
 			<section className="relative py-20 px-4">
-				<div className="container mx-auto max-w-6xl text-center">
+				<div className="container mx-auto text-center">
 					<div className="mb-8">
 						<Badge variant="outline" className="mb-4 px-4 py-2 text-sm font-medium">
 							<Brain className="w-4 h-4 mr-2" />
@@ -426,7 +425,6 @@ export default function MarkmapHooks() {
 			</section>
 
 			<Footer />
-			<ScrollToTop />
 		</main>
 	);
 }
