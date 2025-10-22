@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const beVietnamPro = Be_Vietnam_Pro({
 	subsets: ["latin"],
@@ -30,6 +31,13 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={`${beVietnamPro.variable} ${lacoFont.variable} antialiased font-sans`}>
 				{children}
+				<ScrollToTop />
+				{/* eslint-disable-next-line @next/next/no-sync-scripts */}
+				<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+				<script
+					src="https://files.bpcontent.cloud/2025/09/15/03/20250915030247-R30TMPXR.js"
+					defer
+				></script>
 			</body>
 		</html>
 	);

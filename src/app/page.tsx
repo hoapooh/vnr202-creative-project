@@ -3,14 +3,13 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-	Carousel, 
-	CarouselContent, 
-	CarouselItem, 
-	CarouselNext, 
-	CarouselPrevious 
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,15 +22,15 @@ export default function Home() {
 			description: "Tác động của CTTG thứ 2 và các hội nghị TW Đảng (1939-1941)",
 			href: "/historical-context",
 			period: "1939-1941",
-			image: "/1.jpg"
+			image: "/1.jpg",
 		},
 		{
 			id: 2,
 			title: "Xây dựng Lực lượng và Chuẩn bị Khởi nghĩa",
 			description: "Thành lập Việt Minh, xây dựng lực lượng vũ trang và căn cứ địa",
-			href: "/building-forces", 
+			href: "/building-forces",
 			period: "1941-1945",
-			image: "/2.jpg"
+			image: "/2.jpg",
 		},
 		{
 			id: 3,
@@ -39,7 +38,7 @@ export default function Home() {
 			description: "Từ sự kiện Nhật đảo chính Pháp đến chuẩn bị tổng khởi nghĩa",
 			href: "/anti-japanese-movement",
 			period: "3/1945 - 8/1945",
-			image: "/3.jpg"
+			image: "/3.jpg",
 		},
 		{
 			id: 4,
@@ -47,7 +46,7 @@ export default function Home() {
 			description: "Giành chính quyền toàn quốc và thành lập nước VNDCCH",
 			href: "/august-revolution",
 			period: "Tháng 8/1945",
-			image: "/4.jpg"
+			image: "/4.jpg",
 		},
 		{
 			id: 5,
@@ -55,12 +54,12 @@ export default function Home() {
 			description: "Tầm quan trọng và các bài học từ Cách mạng Tháng Tám",
 			href: "/historical-significance",
 			period: "Di sản lịch sử",
-			image: "/5.jpg"
-		}
+			image: "/5.jpg",
+		},
 	];
 
 	return (
-		<div className="min-h-screen snap-y snap-mandatory">
+		<div className="min-h-screen">
 			<ScrollProgress className="top-[65px]" />
 			<Header />
 
@@ -94,11 +93,9 @@ export default function Home() {
 				</section>
 
 				{/* Navigation Carousel */}
-				<section className="h-screen mx-auto px-6 py-16 snap-start">
+				<section className="mx-auto px-6 py-16 container">
 					<div className="text-center space-y-6 mb-12">
-						<h2 className="text-4xl font-bold text-gray-800 font-laco">
-							Hành trình Lịch sử
-						</h2>
+						<h2 className="text-4xl font-bold text-gray-800 font-laco">Hành trình Lịch sử</h2>
 						<p className="text-xl text-gray-600">
 							Khám phá từng giai đoạn của cuộc cách mạng giải phóng dân tộc
 						</p>
@@ -111,11 +108,14 @@ export default function Home() {
 						}}
 						className="w-full"
 					>
-						<CarouselContent className="-ml-2 md:-ml-4">
+						<CarouselContent className="-ml-2 md:-ml-4 py-10">
 							{sections.map((section) => (
-								<CarouselItem key={section.id} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+								<CarouselItem
+									key={section.id}
+									className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
+								>
 									<Link href={section.href}>
-										<Card className="h-full cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-105 border-0 overflow-hidden group">
+										<Card className="h-full cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-101 border-0 overflow-hidden group pt-0">
 											<div className="relative h-48 overflow-hidden">
 												{/* Background Image */}
 												<Image
@@ -130,9 +130,7 @@ export default function Home() {
 												{/* Section number overlay */}
 												<div className="absolute bottom-4 left-4">
 													<div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center">
-														<span className="text-xl font-bold text-red-600">
-															{section.id}
-														</span>
+														<span className="text-xl font-bold text-red-600">{section.id}</span>
 													</div>
 												</div>
 												{/* Period badge */}
@@ -155,13 +153,18 @@ export default function Home() {
 												</p>
 												<div className="flex items-center text-red-600 text-sm font-medium group-hover:text-red-700 transition-colors">
 													Tìm hiểu thêm
-													<svg 
-														className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" 
-														fill="none" 
-														stroke="currentColor" 
+													<svg
+														className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"
+														fill="none"
+														stroke="currentColor"
 														viewBox="0 0 24 24"
 													>
-														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+														<path
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															strokeWidth={2}
+															d="M9 5l7 7-7 7"
+														/>
 													</svg>
 												</div>
 											</CardContent>
@@ -178,15 +181,14 @@ export default function Home() {
 				</section>
 
 				{/* Introduction Text */}
-				<section className="h-screen mx-auto px-6 py-16 snap-start">
+				<section className="mx-auto px-6 py-16 container">
 					<div className="text-center space-y-6">
-						<h3 className="text-3xl font-bold text-gray-800">
-							Cuộc Cách mạng Tháng Tám 1945
-						</h3>
+						<h3 className="text-3xl font-bold text-gray-800">Cuộc Cách mạng Tháng Tám 1945</h3>
 						<p className="text-lg text-gray-600 leading-relaxed">
-							Cách mạng Tháng Tám năm 1945 là một trong những sự kiện quan trọng nhất trong lịch sử dân tộc Việt Nam. 
-							Đây là cuộc cách mạng giải phóng dân tộc đầu tiên thành công ở một nước thuộc địa, mở ra kỷ nguyên 
-							độc lập, tự do cho dân tộc Việt Nam và có tác động sâu sắc đến phong trào giải phóng dân tộc trên thế giới.
+							Cách mạng Tháng Tám năm 1945 là một trong những sự kiện quan trọng nhất trong lịch sử
+							dân tộc Việt Nam. Đây là cuộc cách mạng giải phóng dân tộc đầu tiên thành công ở một
+							nước thuộc địa, mở ra kỷ nguyên độc lập, tự do cho dân tộc Việt Nam và có tác động sâu
+							sắc đến phong trào giải phóng dân tộc trên thế giới.
 						</p>
 						<div className="grid md:grid-cols-3 gap-8 mt-12">
 							<div className="text-center">
@@ -216,7 +218,6 @@ export default function Home() {
 			</div>
 
 			<Footer />
-			<ScrollToTop />
 		</div>
 	);
 }

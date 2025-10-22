@@ -3,7 +3,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import BuildingForces from "@/components/section/building-forces";
 
 export default function BuildingForcesPage() {
@@ -13,7 +12,6 @@ export default function BuildingForcesPage() {
 			<Header />
 			<BuildingForces />
 			<Footer />
-			<ScrollToTop />
 		</div>
 	);
 }
